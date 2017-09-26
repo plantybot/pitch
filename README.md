@@ -106,8 +106,13 @@ We have to write POST/GET endpoints in flask for botframework and the app to be 
 
 ![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
 
-We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram.
+
+
+We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram. 
+
 ![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
+
+The state information of the system as read by relevant sensors equipped in the system is passed onto a Reasoner. The Reasoner periodically runs algorithms to take decisions on irrigation routines with the collected data. The Reasoner then connects to a Chatbot Application over the web. The Chatbot communicates directly with the User, thereby giving the status of the farm, taking instructions from the user and regularly initiating processes to perform health checkups on the system. The Reasoner along with the Chatbot application forms the core A.I. of the system. The A.I. is backed up by the sensor suite and the actuation system directly controlled through the Raspberry Pi microcomputer. This A.I. based control system represents the overall architecture of the PlantyBot.
 
 On Raspberry pi side, we have four main parts:
 
@@ -135,7 +140,7 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 
 (need updates here, fork and create pull requests)
 
-#### actuators
+#### Actuators
 
 1. A pump is used along with a motor control module (L298N) to start and stop pump at appropriate times.
 2. We need a mechanism to feed small amounts of food to fishes from a storage container 
