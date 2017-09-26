@@ -106,6 +106,9 @@ We have to write POST/GET endpoints in flask for botframework and the app to be 
 
 ![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
 
+We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram.
+![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
+
 On Raspberry pi side, we have four main parts:
 
 1. Sensing
