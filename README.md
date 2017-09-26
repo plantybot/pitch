@@ -10,11 +10,8 @@ Plantybot brings a maintainable aquaponics mini farm into your house and you can
 
 Aquaponics is a farming technique which contains fishes in freshwater and soil-less irrigation bed, which combines into a self sustaining ecosystem. The water from the fish tank is pumped into the irrigation bed periodically, which is drained back into the fish tank. This keeps the water pure, oxygenated, and nutrient rich for the plants to absorb.
 
-![asd](https://www.youtube.com/watch?v=gk6UTFQEOVU)
-
-<iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=gk6UTFQEOVU">
-</iframe> 
+<iframe src="https://player.vimeo.com/video/141252002" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/141252002">Open Source Aquaponic Greenhouse</a> from <a href="https://vimeo.com/opensourceecology">Open Source Ecology</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ### How is it implemented?
 
