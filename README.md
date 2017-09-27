@@ -20,20 +20,20 @@ We are making some additions to the basic aquaponics framework, like:
 ```markdown
 
 1. Adding artificial lights (LED strips)
-2. Sensors drive the system. 
-Temperature, pH, water level, 
+2. Sensors drive the system.
+Temperature, pH, water level,
 lighting on the irrigation bed etc are monitored
-3. Based on the sensing info, 
-actuators irrigate the bed, 
+3. Based on the sensing info,
+actuators irrigate the bed,
 or the fishes are fed
-4. The information collected are periodically 
+4. The information collected are periodically
 updated to a server through a Web-API
-5. A chatbot service (messenger based) is connected 
-to this API and it is used to notify the user 
+5. A chatbot service (messenger based) is connected
+to this API and it is used to notify the user
 about the health and productivity of your farm
-6. Other notifications like when the 
-fish food storage has to be refilled, 
-health of fish tank, 
+6. Other notifications like when the
+fish food storage has to be refilled,
+health of fish tank,
 emergency alerts etc are also sent
 ```
 
@@ -44,7 +44,7 @@ emergency alerts etc are also sent
 
 ![messenger-bot](https://blog.hartleybrody.com/wp-content/uploads/2016/06/facebook-chatbot.png)
 
-Reference: 
+Reference:
 
 1. https://blog.hartleybrody.com/fb-messenger-bot/
 2. https://www.fullstackpython.com/blog/build-first-slack-bot-python.html (this one for slack, we can use Microsoft Bot Framework to make this for FB Messenger)
@@ -73,40 +73,11 @@ My suggestion is to either go for Wit or Lex, as they are both showcasing awesom
 
 ### In depth Information for Techies
 
-#### software architecture - Backend
-
-![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
-
-Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
-
-The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc). 
-
-The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
-
-#### Hosting
-
-[AWS](https://console.aws.amazon.com) is used for hosting.
-
-We can use AWS Lambda which is a serverless architecture for hosting the flask app. Ref: https://github.com/Miserlou/flask-zappa
-
-[AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
-(We need to design the database tables and figure what are the information we will be saving on to it)
-
-#### AI
-
-We need to create intents (stories) in Wit.ai (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app. 
-
-A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
-
-#### Microsoft Bot Framework
-
-We have to write POST/GET endpoints in flask for botframework and the app to be connected. Here is something I worked on previously, (its easier to explain with my code) https://github.com/joeycharlesworth/Autonomyx-bot/blob/master/app.py
-
 ### Hardware prototyping - Raspberry Pi
 
 ![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
 
-We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram. 
+We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram.
 
 ![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
 
@@ -129,7 +100,7 @@ On Raspberry pi side, we have four main parts:
 
 #### Connecting and updating server
 
-RPi, has to collect data, use the Wifi module to connect to the WebHooks and update them regularly (say once every 10mins)
+RPi, has to collect data, use the Wifi module to connect to the WebHooks of the plantybot webservice and update them regularly (say once every 10mins)
 
 
 (need updates here, fork and create pull requests)
@@ -146,6 +117,39 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 2. __Automatic fish feeder__ feeds fishes in fish tank
 3. __LED Lamp__ is used to illuminate the minifarm
 4. __temperature control__ maintaining ideal water temperature. A heater-cooler is used.
+
+#### software architecture - Backend
+
+![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
+
+Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
+
+The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc).
+
+The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
+
+#### Hosting
+
+[AWS](https://console.aws.amazon.com) is used for hosting.
+
+We can use AWS Lambda which is a serverless architecture for hosting the flask app. Ref: https://github.com/Miserlou/flask-zappa
+
+[AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
+(We need to design the database tables and figure what are the information we will be saving on to it)
+
+#### AI - NLP platform
+
+We need to create and train intents in API.AI (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
+
+A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
+
+#### Microsoft Bot Framework
+
+We have to write POST/GET endpoints in flask for botframework and the app to be connected. Here is something I worked on previously, (its easier to explain with my code) https://github.com/joeycharlesworth/Autonomyx-bot/blob/master/app.py
+
+#### High level architecture of Chatbot
+
+![chatbot_architecture](images/REST_API.png)
 
 ### Conclusion
 
