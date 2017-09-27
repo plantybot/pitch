@@ -15,36 +15,50 @@ Aquaponics is a farming technique which contains fishes in freshwater and soil-l
 
 ### How is it implemented?
 
-We are making some additions to the basic aquaponics framework, like:
+The main blocks to the implementation are:
+
+1. The farming setup
+2. The sensors and hardware setup
+3. A Webservice (API)
+4. Chatbot NLP engine
+5. A chat client (FB Messenger)
+
+These blocks are connected in such a way that a user could maintain their farm
+by interacting with an AI chatbot, getting status updates of the farm and requesting
+changes to farm parameters.
+
+#### Farmbed setup
+Aquaponics farming setup would contain:
 
 ```markdown
 
 1. Adding artificial lights (LED strips)
-2. Sensors drive the system. 
-Temperature, pH, water level, 
+2. Sensors drive the system.
+Temperature, pH, water level,
 lighting on the irrigation bed etc are monitored
-3. Based on the sensing info, 
-actuators irrigate the bed, 
+3. Based on the sensing info,
+actuators irrigate the bed,
 or the fishes are fed
-4. The information collected are periodically 
+4. The information collected are periodically
 updated to a server through a Web-API
-5. A chatbot service (messenger based) is connected 
-to this API and it is used to notify the user 
+5. A chatbot service (messenger based) is connected
+to this API and it is used to notify the user
 about the health and productivity of your farm
-6. Other notifications like when the 
-fish food storage has to be refilled, 
-health of fish tank, 
+6. Other notifications like when the
+fish food storage has to be refilled,
+health of fish tank,
 emergency alerts etc are also sent
 ```
+![basic setup](https://upload.wikimedia.org/wikipedia/commons/b/b1/Systeme_FLOOD%26DRAIN_573px.jpg)
+*A basic setup*
 
 ### Chatbot architecture
-
 
 #### How to make a messenger bot?
 
 ![messenger-bot](https://blog.hartleybrody.com/wp-content/uploads/2016/06/facebook-chatbot.png)
 
-Reference: 
+Reference:
 
 1. https://blog.hartleybrody.com/fb-messenger-bot/
 2. https://www.fullstackpython.com/blog/build-first-slack-bot-python.html (this one for slack, we can use Microsoft Bot Framework to make this for FB Messenger)
@@ -79,7 +93,7 @@ My suggestion is to either go for Wit or Lex, as they are both showcasing awesom
 
 Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
 
-The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc). 
+The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc).
 
 The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
 
@@ -94,21 +108,15 @@ We can use AWS Lambda which is a serverless architecture for hosting the flask a
 
 #### AI
 
-We need to create intents (stories) in Wit.ai (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app. 
+We need to create intents (stories) in Wit.ai (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
 
 A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
-
-#### Microsoft Bot Framework
-
-We have to write POST/GET endpoints in flask for botframework and the app to be connected. Here is something I worked on previously, (its easier to explain with my code) https://github.com/joeycharlesworth/Autonomyx-bot/blob/master/app.py
 
 ### Hardware prototyping - Raspberry Pi
 
 ![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
 
-
-
-We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram. 
+We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram.
 
 ![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
 
@@ -143,7 +151,7 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 #### Actuators
 
 1. A pump is used along with a motor control module (L298N) to start and stop pump at appropriate times.
-2. We need a mechanism to feed small amounts of food to fishes from a storage container 
+2. We need a mechanism to feed small amounts of food to fishes from a storage container
 (need updates here, fork and create pull requests)
 
 ### Conclusion
