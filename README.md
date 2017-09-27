@@ -87,6 +87,50 @@ My suggestion is to either go for Wit or Lex, as they are both showcasing awesom
 
 ### In depth Information for Techies
 
+### Hardware prototyping - Raspberry Pi
+
+![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
+
+We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram.
+
+![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
+
+The state information of the system as read by relevant sensors equipped in the system is passed onto a Reasoner. The Reasoner periodically runs algorithms to take decisions on irrigation routines with the collected data. The Reasoner then connects to a Chatbot Application over the web. The Chatbot communicates directly with the User, thereby giving the status of the farm, taking instructions from the user and regularly initiating processes to perform health checkups on the system. The Reasoner along with the Chatbot application forms the core A.I. of the system. The A.I. is backed up by the sensor suite and the actuation system directly controlled through the Raspberry Pi microcomputer. This A.I. based control system represents the overall architecture of the PlantyBot.
+
+On Raspberry pi side, we have four main parts:
+
+1. Sensing
+2. Connecting and updating server
+3. The default irrigation routine (which can be interrupted by the user through the chatbot side)
+4. Actuators
+
+#### Sensors
+
+1. __Light intensity Sensor__ to measure the amount of light over the minifarm
+2. __Temperature sensor__ to measure the temperature of water in fish tank
+3. __pH or Conductivity sensor__ to measure the pH levels of water
+4. __water level sensor__ to measure the amount of water in the system
+5. __fish feed sensor__ to measure the amount of fish food in the automatic fish feeder
+
+#### Connecting and updating server
+
+RPi, has to collect data, use the Wifi module to connect to the WebHooks of the plantybot webservice and update them regularly (say once every 10mins)
+
+(need updates here, fork and create pull requests)
+
+#### Default farming algorithm
+
+If unsupervised by the user, the bot should be able to take care of the farming bed with good default algo. So it should be able to irrigate the farm periodically and feed the fish in appropriate intervals. The user should however be given control over changing the frequency of irrigation/amt of water supplied, force feed fishes too
+
+(need updates here, fork and create pull requests)
+
+#### Actuators
+
+1. __Water pump__ to circulate water from fish tank to the irrigation bed
+2. __Automatic fish feeder__ feeds fishes in fish tank
+3. __LED Lamp__ is used to illuminate the minifarm
+4. __temperature control__ maintaining ideal water temperature. A heater-cooler is used.
+
 #### software architecture - Backend
 
 ![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
@@ -106,53 +150,19 @@ We can use AWS Lambda which is a serverless architecture for hosting the flask a
 [AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
 (We need to design the database tables and figure what are the information we will be saving on to it)
 
-#### AI
+#### AI - NLP platform
 
-We need to create intents (stories) in Wit.ai (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
+We need to create and train intents in API.AI (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
 
 A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
 
-### Hardware prototyping - Raspberry Pi
+#### Microsoft Bot Framework
 
-![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
+We have to write POST/GET endpoints in flask for botframework and the app to be connected. Here is something I worked on previously, (its easier to explain with my code) https://github.com/joeycharlesworth/Autonomyx-bot/blob/master/app.py
 
-We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram.
+#### High level architecture of Chatbot
 
-![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
-
-The state information of the system as read by relevant sensors equipped in the system is passed onto a Reasoner. The Reasoner periodically runs algorithms to take decisions on irrigation routines with the collected data. The Reasoner then connects to a Chatbot Application over the web. The Chatbot communicates directly with the User, thereby giving the status of the farm, taking instructions from the user and regularly initiating processes to perform health checkups on the system. The Reasoner along with the Chatbot application forms the core A.I. of the system. The A.I. is backed up by the sensor suite and the actuation system directly controlled through the Raspberry Pi microcomputer. This A.I. based control system represents the overall architecture of the PlantyBot.
-
-On Raspberry pi side, we have four main parts:
-
-1. Sensing
-2. Connecting and updating server
-3. The default irrigation routine (which can be interrupted by the user through the chatbot side)
-4. Actuators
-
-#### Sensing
-
-We can start with light over agri-bed, fish-tank water-level and fish-tank water temperature sensing
-
-(need updates here, fork and create pull requests)
-
-#### Connecting and updating server
-
-RPi, has to collect data, use the Wifi module to connect to the WebHooks and update them regularly (say once every 10mins)
-
-
-(need updates here, fork and create pull requests)
-
-#### Default farming algorithm
-
-If unsupervised by the user, the bot should be able to take care of the farming bed with good default algo. So it should be able to irrigate the farm periodically and feed the fish in appropriate intervals. The user should however be given control over changing the frequency of irrigation/amt of water supplied, force feed fishes too
-
-(need updates here, fork and create pull requests)
-
-#### Actuators
-
-1. A pump is used along with a motor control module (L298N) to start and stop pump at appropriate times.
-2. We need a mechanism to feed small amounts of food to fishes from a storage container
-(need updates here, fork and create pull requests)
+![chatbot_architecture](images/REST_API.png)
 
 ### Conclusion
 
