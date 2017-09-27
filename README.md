@@ -106,8 +106,6 @@ We have to write POST/GET endpoints in flask for botframework and the app to be 
 
 ![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
 
-
-
 We intend to develop a ROS based solution on Raspberry Pi for automating the desired, intended aquaponics system on our PlantyBot. The higher level architecture of the system is depicted in the following diagram. 
 
 ![sysArch](images/highlevelarch.jpg?raw=true "System Architecture")
@@ -121,11 +119,13 @@ On Raspberry pi side, we have four main parts:
 3. The default irrigation routine (which can be interrupted by the user through the chatbot side)
 4. Actuators
 
-#### Sensing
+#### Sensors
 
-We can start with light over agri-bed, fish-tank water-level and fish-tank water temperature sensing
-
-(need updates here, fork and create pull requests)
+1. __Light intensity Sensor__ to measure the amount of light over the minifarm
+2. __Temperature sensor__ to measure the temperature of water in fish tank
+3. __pH or Conductivity sensor__ to measure the pH levels of water
+4. __water level sensor__ to measure the amount of water in the system
+5. __fish feed sensor__ to measure the amount of fish food in the automatic fish feeder
 
 #### Connecting and updating server
 
@@ -142,9 +142,10 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 
 #### Actuators
 
-1. A pump is used along with a motor control module (L298N) to start and stop pump at appropriate times.
-2. We need a mechanism to feed small amounts of food to fishes from a storage container 
-(need updates here, fork and create pull requests)
+1. __Water pump__ to circulate water from fish tank to the irrigation bed
+2. __Automatic fish feeder__ feeds fishes in fish tank
+3. __LED Lamp__ is used to illuminate the minifarm
+4. __temperature control__ maintaining ideal water temperature. A heater-cooler is used.
 
 ### Conclusion
 
