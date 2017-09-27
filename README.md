@@ -15,7 +15,20 @@ Aquaponics is a farming technique which contains fishes in freshwater and soil-l
 
 ### How is it implemented?
 
-We are making some additions to the basic aquaponics framework, like:
+The main blocks to the implementation are:
+
+1. The farming setup
+2. The sensors and hardware setup
+3. A Webservice (API)
+4. Chatbot NLP engine
+5. A chat client (FB Messenger)
+
+These blocks are connected in such a way that a user could maintain their farm
+by interacting with an AI chatbot, getting status updates of the farm and requesting
+changes to farm parameters.
+
+#### Farmbed setup
+Aquaponics farming setup would contain:
 
 ```markdown
 
@@ -36,9 +49,10 @@ fish food storage has to be refilled,
 health of fish tank,
 emergency alerts etc are also sent
 ```
+![basic setup](https://upload.wikimedia.org/wikipedia/commons/b/b1/Systeme_FLOOD%26DRAIN_573px.jpg)
+*A basic setup*
 
 ### Chatbot architecture
-
 
 #### How to make a messenger bot?
 
@@ -101,7 +115,6 @@ On Raspberry pi side, we have four main parts:
 #### Connecting and updating server
 
 RPi, has to collect data, use the Wifi module to connect to the WebHooks of the plantybot webservice and update them regularly (say once every 10mins)
-
 
 (need updates here, fork and create pull requests)
 
