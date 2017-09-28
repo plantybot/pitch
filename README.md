@@ -27,6 +27,9 @@ Take a look at this video to get more understanding of aquaponics.
 
 ### How is it implemented?
 
+![basic setup](https://upload.wikimedia.org/wikipedia/commons/b/b1/Systeme_FLOOD%26DRAIN_573px.jpg)
+*A basic setup*
+
 **Basic workflow**
 
 The water from the fish tank is rich with nutrients from the fish excretions.
@@ -75,8 +78,6 @@ fish food storage has to be refilled,
 health of fish tank,
 emergency alerts etc are also sent
 ```
-![basic setup](https://upload.wikimedia.org/wikipedia/commons/b/b1/Systeme_FLOOD%26DRAIN_573px.jpg)
-*A basic setup*
 
 ### Chatbot architecture
 
@@ -93,7 +94,7 @@ We are making a messenger bot, a bot user with whom we can chat with from messen
 4. the responses would be through messenger
 5. Actions can be taken on the farm based on the user messages.
 
-Reference:
+References:
 
 1. https://blog.hartleybrody.com/fb-messenger-bot/
 2. https://www.fullstackpython.com/blog/build-first-slack-bot-python.html (this one for slack, we can use Microsoft Bot Framework to make this for FB Messenger)
@@ -110,10 +111,14 @@ For example when the user starts a conversation with the bot by saying "Hi", the
 ```markdown
 1. greeting (e.g. user says "Good Morning")
 2. help (e.g. user says "Can you help me?")
-3. status (e.g. user says "how's it going?", "how are things in my farm?" etc)
-4. customercare (e.g. user says "Can I talk to some support?")
-5. name (e.g. user asks  plantybot for its name "what's your name?")
-6. location (e.g. user asks plantybot "Where do you live?")
+3. status (e.g. user says "how's it going?", 
+"how are things in my farm?" etc)
+4. customercare (e.g. user says 
+"Can I talk to some support?")
+5. name (e.g. user asks  plantybot 
+for its name "what's your name?")
+6. location (e.g. user asks plantybot
+"Where do you live?")
 
 ```
 
