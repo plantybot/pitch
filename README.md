@@ -14,6 +14,8 @@ where plantybot comes in.
 
 Plantybot is an Internet of things solution for in-house farming. The farm is designed as stacks of horizontal planes where green vegetables can be planted. Equipped with sensors, it is self/minimal maintenance. You can talk to plantybot through FB messenger and get notified anytime about the status of your farm. You can even change the parameters like lighting, irrigation, etc.
 
+![plantybot_setup](images/plantybot_setup_3d.png)
+
 An interesting way to make the farm self sustainable is to make it an aquaponics ecosystem.
 
 ### What's aquaponics?
