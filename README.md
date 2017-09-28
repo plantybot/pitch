@@ -97,7 +97,7 @@ Reference:
 2. https://www.fullstackpython.com/blog/build-first-slack-bot-python.html (this one for slack, we can use Microsoft Bot Framework to make this for FB Messenger)
 3. https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start/ (FB's docs on making a messenger app)
 
-#### How to make the bot AI?
+### How to make the bot AI?
 
 One of the basic concept of making a chatbot into a AI chatbot, is making the bot understand user
 
@@ -119,7 +119,7 @@ There are many web services which serve as the bots AI engine. For example https
 
 We are going with API.Ai for its scalability and intutive interface.
 
-### In depth Information for Techies
+## In depth Information for Techies
 
 ### Hardware prototyping - Raspberry Pi
 
@@ -138,7 +138,7 @@ On Raspberry pi side, we have four main parts:
 3. The default irrigation routine (which can be interrupted by the user through the chatbot side)
 4. Actuators
 
-#### Sensors
+### Sensors
 
 Raspberry Pi, has to collect data, use the Wifi module to connect to the Webhooks and update them regularly (say once every 10mins)
 
@@ -149,17 +149,17 @@ We are using:
 4. __water level sensor__ to measure the amount of water in the system
 5. __fish feed sensor__ to measure the amount of fish food in the automatic fish feeder
 
-#### Connecting and updating server
+### Connecting and updating server
 
 RPi, has to collect data, use the Wifi module to connect to the WebHooks of the plantybot webservice and update them regularly (say once every 10mins)
 
 (need updates here, fork and create pull requests)
 
-#### Default farming algorithm
+### Default farming algorithm
 
 If unsupervised by the user, the bot should be able to take care of the farming bed with good defaults. So it should be able to irrigate the farm periodically and feed the fish in appropriate intervals. The user should however be given control over changing the frequency of irrigation/amt of water supplied, force feed fishes too
 
-#### Actuators
+### Actuators
 
 1. A pump (12V 1A) is used along with a motor control module (L298N) to pump water to irrigate beds at appropriate times.
 2. Automatic fish feeder. A motor based "shaker" that sprinkles fish food in regular intervals.
@@ -167,13 +167,13 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 4. Drain valve (electronic valve) that drains water back to fish tank from irrigation bed
 5. Temperature control unit.
 
-#### software architecture - Backend
+## software architecture - Backend
 
-#### High level architecture of Chatbot
+### High level architecture of Chatbot
 
 ![chatbot_architecture](images/REST_API.png)
 
-#### Web Framework
+### Web Framework
 
 Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
 
@@ -181,7 +181,7 @@ The webhooks are used by the hardware for updating the server with its observati
 
 The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
 
-#### Hosting
+### Hosting
 
 [AWS](https://console.aws.amazon.com) is used for hosting.
 
@@ -190,13 +190,13 @@ We can use AWS Lambda which is a serverless architecture for hosting the flask a
 [AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
 (We need to design the database tables and figure what are the information we will be saving on to it)
 
-#### AI - NLP platform
+### AI - NLP platform
 
 We need to create and train intents in API.AI (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
 
 A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
 
-### Conclusion
+## Conclusion
 
 This is a prototype to the product we have envisioned. We will be adding more features in the future.
 Some of the features in our minds are adding DNA BioChips for detecting plant diseases and profile of nutrients it absorbs. We will also be implementing analytics to our software architecture to figure out, for example, which plants grow best in a particular geolocation, etc.
