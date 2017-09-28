@@ -1,26 +1,47 @@
 ## Plantybot
 
-An Urbanfarming bot that you can chat with. Make fresh, organic produces for your family, right in your home. Let plantybot take care of maintaining your farm.
+An Urbanfarming bot that you can chat with. Make fresh, organic produces for your family, right at your home. Let plantybot take care of maintaining your farm.
 
-### Why Plantybot?
+## What is Plantybot?
 
-Plantybot brings a maintainable aquaponics mini farm into your house and you can monitor the plant growth by chatting with it from FB messenger.
+Many urban people have busy lives and farming may sound like a happy dream, but a low priority activity to venture.
+
+What if we can make healthy produces at home, while putting in minimal time into your farm. This is
+where plantybot comes in.
+
+Plantybot is an Internet of things solution for in-house farming. The farm is designed as stacks of horizontal planes where green vegetables can be planted. Equipped with sensors, it is self/minimal maintenance. You can talk to plantybot through FB messenger and get notified anytime about the status of your farm. You can even change the parameters like lighting, irrigation, etc.
+
+An interesting way to make the farm self sustainable is to make it an aquaponics ecosystem.
 
 ### What's aquaponics?
 
-Aquaponics is a farming technique which contains fishes in freshwater and soil-less irrigation bed, which combines into a self sustaining ecosystem. The water from the fish tank is pumped into the irrigation bed periodically, which is drained back into the fish tank. This keeps the water pure, oxygenated, and nutrient rich for the plants to absorb.
+Aquaponics is a farming technique which combines raising fishes in freshwater (aquaculture) and soil-less farming (hydroponics), making them a self sustaining ecosystem.
+
+Take a look at this video to get more understanding of aquaponics.
 
 <iframe src="https://player.vimeo.com/video/141252002" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/141252002">Open Source Aquaponic Greenhouse</a> from <a href="https://vimeo.com/opensourceecology">Open Source Ecology</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ### How is it implemented?
 
+**Basic workflow**
+
+The water from the fish tank is rich with nutrients from the fish excretions.
+
+We have a pebble farmbed with our plantation.
+
+This water needs to be pumped into the farm beds periodically, and is drained back into the fish tank.
+
+This keeps the water pure, oxygenated for the fishes and inturn provides nutrients for the plants.
+
+**IoT workflow**
+
 The main blocks to the implementation are:
 
-1. The farming setup
-2. The sensors and hardware setup
-3. A Webservice (API)
-4. Chatbot NLP engine
+1. The farming setup (Physical Mechanism)
+2. The sensors and hardware setup (Electronics)
+3. REST API (Web Service)
+4. Chatbot NLP engine (Artificial Intelligence)
 5. A chat client (FB Messenger)
 
 These blocks are connected in such a way that a user could maintain their farm
@@ -58,6 +79,15 @@ emergency alerts etc are also sent
 
 ![messenger-bot](https://blog.hartleybrody.com/wp-content/uploads/2016/06/facebook-chatbot.png)
 
+We are making a messenger bot, a bot user with whom we can chat with from messenger.
+
+**High level steps**
+1. We need to register with the facebook developers page and add create the bot user.
+2. We then implement a webhook by hosting a web service in AWS Lambda, this is where the messages to the bot user will be handled.
+3. We will add AI capabilites as discussed below
+4. the responses would be through messenger
+5. Actions can be taken on the farm based on the user messages.
+
 Reference:
 
 1. https://blog.hartleybrody.com/fb-messenger-bot/
@@ -66,7 +96,9 @@ Reference:
 
 #### How to make the bot AI?
 
-One of the basic concept of making a chatbot into a AI chatbot, is making the bot understand user **intent**.
+One of the basic concept of making a chatbot into a AI chatbot, is making the bot understand user
+
+**intent**.
 
 For example when the user starts a conversation with the bot by saying "Hi", the bot should understand that the intent is `greeting` and create a response like "Hey there {username}". Some common intents that make our bot sound human:
 
@@ -78,12 +110,11 @@ For example when the user starts a conversation with the bot by saying "Hi", the
 5. name (e.g. user asks  plantybot for its name "what's your name?")
 6. location (e.g. user asks plantybot "Where do you live?")
 
-Please create pull requests and add more intents based on what you think the bot needs
 ```
 
-There are many web services which serve as the bots AI engine. For example https://wit.ai is facebooks Chatbot AI engine, that is free even for commercial use. Other options are Lex (Amazons), IBM Watson, LUIS (microsofts).
+There are many web services which serve as the bots AI engine. For example https://wit.ai is facebooks Chatbot AI engine, that is free even for commercial use. Other options are API.AI (Googles'), Lex (Amazons), IBM Watson, LUIS (microsofts).
 
-My suggestion is to either go for Wit or Lex, as they are both showcasing awesome results.
+We are going with API.Ai for its scalability and intutive interface.
 
 ### In depth Information for Techies
 
@@ -106,6 +137,9 @@ On Raspberry pi side, we have four main parts:
 
 #### Sensors
 
+Raspberry Pi, has to collect data, use the Wifi module to connect to the Webhooks and update them regularly (say once every 10mins)
+
+We are using:
 1. __Light intensity Sensor__ to measure the amount of light over the minifarm
 2. __Temperature sensor__ to measure the temperature of water in fish tank
 3. __pH or Conductivity sensor__ to measure the pH levels of water
@@ -120,52 +154,21 @@ RPi, has to collect data, use the Wifi module to connect to the WebHooks of the 
 
 #### Default farming algorithm
 
-If unsupervised by the user, the bot should be able to take care of the farming bed with good default algo. So it should be able to irrigate the farm periodically and feed the fish in appropriate intervals. The user should however be given control over changing the frequency of irrigation/amt of water supplied, force feed fishes too
-
-(need updates here, fork and create pull requests)
+If unsupervised by the user, the bot should be able to take care of the farming bed with good defaults. So it should be able to irrigate the farm periodically and feed the fish in appropriate intervals. The user should however be given control over changing the frequency of irrigation/amt of water supplied, force feed fishes too
 
 #### Actuators
 
-1. __Water pump__ to circulate water from fish tank to the irrigation bed
-2. __Automatic fish feeder__ feeds fishes in fish tank
-3. __LED Lamp__ is used to illuminate the minifarm
-4. __temperature control__ maintaining ideal water temperature. A heater-cooler is used.
-
-#### software architecture - Backend
-
-![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
-
-Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
-
-The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc).
-
-The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
-
-#### Hosting
-
-[AWS](https://console.aws.amazon.com) is used for hosting.
-
-We can use AWS Lambda which is a serverless architecture for hosting the flask app. Ref: https://github.com/Miserlou/flask-zappa
-
-[AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
-(We need to design the database tables and figure what are the information we will be saving on to it)
-
-#### AI - NLP platform
-
-We need to create and train intents in API.AI (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
-
-A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
-
-#### Microsoft Bot Framework
-
-We have to write POST/GET endpoints in flask for botframework and the app to be connected. Here is something I worked on previously, (its easier to explain with my code) https://github.com/joeycharlesworth/Autonomyx-bot/blob/master/app.py
-
-#### High level architecture of Chatbot
-
-![chatbot_architecture](images/REST_API.png)
+1. A pump (12V 1A) is used along with a motor control module (L298N) to pump water to irrigate beds at appropriate times.
+2. Automatic fish feeder. A motor based "shaker" that sprinkles fish food in regular intervals.
+3. LED lighting intensity. LED colors are chosen to mimic plant absorption spectrum and minimize power consumption.
+4. Drain valve (electronic valve) that drains water back to fish tank from irrigation bed
+5. Temperature control unit.
 
 ### Conclusion
 
-I have put kinda all the info I have about the solution. Please fork the repo, create pull requests, or you can even directly edit this README.md to update info. A pull request helps in all of us reviewing a change, which I feel might help improve the doc/site.
+This is a prototype to the product we have envisioned. We will be adding more features in the future.
+Some of the features in our minds are adding DNA BioChips for detecting plant diseases and profile of nutrients it absorbs. We will also be implementing analytics to our software architecture to figure out, for example, which plants grow best in a particular geolocation, etc.
 
-Also for any updates create an issue [here](https://github.com/plantybot/pitch/issues). Create issues for TODOs also, like I am creating an issue for us having a pair programming session where we can explore how to create a flask based messenger bot (a sample bot)
+Also for any updates create an issue [here](https://github.com/plantybot/pitch/issues).
+
+Check out our organization page on Github: https://github.com/plantybot/
