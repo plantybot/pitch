@@ -169,7 +169,9 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 
 #### software architecture - Backend
 
-![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
+#### High level architecture of Chatbot
+
+![chatbot_architecture](images/REST_API.png)
 
 Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
 
