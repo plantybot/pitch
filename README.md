@@ -4,7 +4,7 @@ An Urbanfarming bot that you can chat with. Make fresh, organic produces for you
 
 ### What is Plantybot?
 
-Many urban people have busy lives and farming may sound like a happy dream, but a low priority activity to venture.
+Many of us citybred have busy lives and farming may sound like a happy dream to us, but a low priority activity to venture.
 
 What if we can make healthy produces at home, while putting in minimal time into your farm. This is
 where plantybot comes in.
