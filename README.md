@@ -5,6 +5,7 @@ An Urbanfarming bot that you can chat with. Make fresh, organic produces for you
 ### What is Plantybot?
 
 ![groot](https://i.ytimg.com/vi/FAciZRkOKQs/maxresdefault.jpg)
+*Groot, Gaurdian of the Galaxy (No image copyright)*
 
 Many of us citybred have busy lives and farming may sound like a happy dream to us, but a low priority activity to venture.
 
