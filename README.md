@@ -124,7 +124,7 @@ for its name "what's your name?")
 
 There are many web services which serve as the bots AI engine. For example https://wit.ai is facebooks Chatbot AI engine, that is free even for commercial use. Other options are API.AI (Googles'), Lex (Amazons), IBM Watson, LUIS (microsofts).
 
-We are going with API.Ai for its scalability and intutive interface.
+We are going with [API.Ai](https://api.ai) for its scalability and intutive interface.
 
 ## In depth Information for Techies
 
