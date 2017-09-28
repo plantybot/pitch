@@ -2,7 +2,7 @@
 
 An Urbanfarming bot that you can chat with. Make fresh, organic produces for your family, right at your home. Let plantybot take care of maintaining your farm.
 
-## What is Plantybot?
+### What is Plantybot?
 
 Many urban people have busy lives and farming may sound like a happy dream, but a low priority activity to venture.
 
@@ -48,7 +48,7 @@ These blocks are connected in such a way that a user could maintain their farm
 by interacting with an AI chatbot, getting status updates of the farm and requesting
 changes to farm parameters.
 
-#### Farmbed setup
+**Farmbed setup**
 Aquaponics farming setup would contain:
 
 ```markdown
@@ -75,7 +75,7 @@ emergency alerts etc are also sent
 
 ### Chatbot architecture
 
-#### How to make a messenger bot?
+**How to make a messenger bot?**
 
 ![messenger-bot](https://blog.hartleybrody.com/wp-content/uploads/2016/06/facebook-chatbot.png)
 
@@ -163,6 +163,31 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 3. LED lighting intensity. LED colors are chosen to mimic plant absorption spectrum and minimize power consumption.
 4. Drain valve (electronic valve) that drains water back to fish tank from irrigation bed
 5. Temperature control unit.
+
+#### software architecture - Backend
+
+![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
+
+Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
+
+The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc).
+
+The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
+
+#### Hosting
+
+[AWS](https://console.aws.amazon.com) is used for hosting.
+
+We can use AWS Lambda which is a serverless architecture for hosting the flask app. Ref: https://github.com/Miserlou/flask-zappa
+
+[AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
+(We need to design the database tables and figure what are the information we will be saving on to it)
+
+#### AI - NLP platform
+
+We need to create and train intents in API.AI (or LEX) for each of the intents we come up with. Then we need to connect that to the flask app.
+
+A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
 
 ### Conclusion
 
