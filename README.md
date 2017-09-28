@@ -173,6 +173,8 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 
 ![chatbot_architecture](images/REST_API.png)
 
+#### Web Framework
+
 Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
 
 The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc).
