@@ -41,11 +41,13 @@ This keeps the water pure, oxygenated for the fishes and inturn provides nutrien
 
 The main blocks to the implementation are:
 
+```markdown
 1. The farming setup (Physical Mechanism)
 2. The sensors and hardware setup (Electronics)
 3. REST API (Web Service)
 4. Chatbot NLP engine (Artificial Intelligence)
 5. A chat client (FB Messenger)
+```
 
 These blocks are connected in such a way that a user could maintain their farm
 by interacting with an AI chatbot, getting status updates of the farm and requesting
