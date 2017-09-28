@@ -118,31 +118,6 @@ We are going with API.Ai for its scalability and intutive interface.
 
 ### In depth Information for Techies
 
-#### software architecture - Backend
-
-![software](https://c1.staticflickr.com/5/4004/4653088356_194d56a59a_b.jpg)
-
-Python Flask is a great microwebframework that makes it easy to implement [webhooks](https://webhooks.pbworks.com/w/page/13385124/FrontPage) and a [RESTful web API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
-
-The webhooks are used by the hardware for updating the server with its observations (like temp, humidity etc).
-
-The Web API is used by the Chatbot service to interact with the database and fetch latest information about someone's farm
-
-#### Hosting
-
-[AWS](https://console.aws.amazon.com) is used for hosting.
-
-We can use AWS Lambda which is a serverless architecture for hosting the flask app. Ref: https://github.com/Miserlou/flask-zappa
-
-[AWS RDS](https://aws.amazon.com/rds/) can be used to host a POSTGRE-SQL database, which works easily with flask.
-(We need to design the database tables and figure what are the information we will be saving on to it)
-
-#### AI
-
-We need to create intents Api.ai for each of the intents we come up with. Then we need to connect that to the flask app.
-
-A [tutorial](https://github.com/joeycharlesworth/Autonomyx-bot/wiki/Wit.Ai-Tutorital) on Wit.ai
-
 ### Hardware prototyping - Raspberry Pi
 
 ![RPi](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Raspberry_Pi_B%2B_rev_1.2.svg/2000px-Raspberry_Pi_B%2B_rev_1.2.svg.png)
@@ -160,13 +135,22 @@ On Raspberry pi side, we have four main parts:
 3. The default irrigation routine (which can be interrupted by the user through the chatbot side)
 4. Actuators
 
-#### Sensing
+#### Sensors
 
-We can start with light over agri-bed, fish-tank water-level and fish-tank water temperature sensing
+Raspberry Pi, has to collect data, use the Wifi module to connect to the Webhooks and update them regularly (say once every 10mins)
+
+We are using:
+1. __Light intensity Sensor__ to measure the amount of light over the minifarm
+2. __Temperature sensor__ to measure the temperature of water in fish tank
+3. __pH or Conductivity sensor__ to measure the pH levels of water
+4. __water level sensor__ to measure the amount of water in the system
+5. __fish feed sensor__ to measure the amount of fish food in the automatic fish feeder
 
 #### Connecting and updating server
 
-Raspberry Pi, has to collect data, use the Wifi module to connect to the Webhooks and update them regularly (say once every 10mins)
+RPi, has to collect data, use the Wifi module to connect to the WebHooks of the plantybot webservice and update them regularly (say once every 10mins)
+
+(need updates here, fork and create pull requests)
 
 #### Default farming algorithm
 
@@ -182,6 +166,9 @@ If unsupervised by the user, the bot should be able to take care of the farming 
 
 ### Conclusion
 
-I have put kinda all the info I have about the solution. Please fork the repo, create pull requests, or you can even directly edit this README.md to update info. A pull request helps in all of us reviewing a change, which I feel might help improve the doc/site.
+This is a prototype to the product we have envisioned. We will be adding more features in the future.
+Some of the features in our minds are adding DNA BioChips for detecting plant diseases and profile of nutrients it absorbs. We will also be implementing analytics to our software architecture to figure out, for example, which plants grow best in a particular geolocation, etc.
 
-Also for any updates create an issue [here](https://github.com/plantybot/pitch/issues). Create issues for TODOs also, like I am creating an issue for us having a pair programming session where we can explore how to create a flask based messenger bot (a sample bot)
+Also for any updates create an issue [here](https://github.com/plantybot/pitch/issues).
+
+Check out our organization page on Github: https://github.com/plantybot/
