@@ -1,0 +1,24 @@
+Problem statement:
+------------------
+Create self sustainable and minimal maintenance urban farms, that is aligned with the lifestyle of busy people. Combating unhealthy food habits and lack of reliable, organic food, producing food at home and offices is a viable option. Can the boilerplates in agriculture, like timely surviellence and physical efforts like irrigation be automated so that people can focus on what to plant, how to create good ecosystems and enjoy fresh produces?
+
+Theme:
+------
+Food and manufacturing
+
+Proposed Solution:
+------------------
+We are proposing an urban-farm that is maintained in a user's home or office. The maintenance is mostly automated and is designed to be friendly for urban lifestyles.
+
+Combining Aquaponics(https://en.wikipedia.org/wiki/Aquaponics), Internet of things(https://en.wikipedia.org/wiki/Internet_of_things) and AI Chatbots(https://en.wikipedia.org/wiki/Chatbot), we are making a novel attempt to bring in great user experience and maintenable home farms.
+
+With a vertical or layered farm design, the home/office real-estate is optimised for max produces.
+Sensors and Actuators monitor and control the subtle ecosystem of the farm
+By making the farm an aquaponics system, makes the farm self-sustainable and requires minimal user intervention.
+A chatbot enables users to have constant vigilance over the farm and the user can control the farm parameters or set sensible defaults for the farm to take care of itself.
+
+We are planning on using cutting edge tech, For more information on the approach, take a look at our documentation.
+
+Documentation:
+--------------
+https://plantybot.github.io/pitch/
