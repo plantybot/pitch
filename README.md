@@ -7,12 +7,12 @@ An Urbanfarming bot that you can chat with. Make fresh, organic produces for you
 ![groot](https://i.ytimg.com/vi/FAciZRkOKQs/maxresdefault.jpg)
 *Groot, Gaurdian of the Galaxy (No image copyright)*
 
-Many of us citybred have busy lives and farming may sound like a happy dream to us, but a low priority activity to venture.
+Many of us citybred have busy lives and farming may sound like a happy dream to us, but a low priority activity to venture into.
 
-What if we can make healthy produces at home, while putting in minimal time into your farm. This is
+What if we can make healthy produces at home, while putting in minimal time into our farm? This is
 where plantybot comes in.
 
-Plantybot is an Internet of things solution for in-house farming. The farm is designed as stacks of horizontal planes where green vegetables can be planted. Equipped with sensors, it is self/minimal maintenance. You can talk to plantybot through FB messenger and get notified anytime about the status of your farm. You can even change the parameters like lighting, irrigation, etc.
+Plantybot is an Internet of things(IoT) solution for in-house farming. The farm is designed as stacks of horizontal planes where green vegetables can be planted. Equipped with sensors, it is self/minimal maintenance. You can talk to plantybot through FB messenger and get notified anytime about the status of your farm. You can even change the parameters like lighting, irrigation, etc.
 
 ![plantybot_setup](images/plantybot_setup_3d.png)
 
