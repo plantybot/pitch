@@ -152,17 +152,23 @@ On Raspberry pi side, we have four main parts:
 Raspberry Pi, has to collect data, use the Wifi module to connect to the Webhooks and update them regularly (say once every 10mins)
 
 We are using:
-1. __Light intensity Sensor__ to measure the amount of light over the minifarm
-2. __Temperature sensor__ to measure the temperature of water in fish tank
+1. __Light intensity Sensor__ to measure the amount of light over the minifarm. For this purpose, we intend to choose from the commonly used digital light intensity sensors like __BH1750FVI__ or __TSL2561__, both come with a 16-bit ADC resolution and i2c bus interface.
+2. __Temperature sensor__ to measure the temperature of water in fish tank. We intend to use a waterproof, single wire and digital temperature sensor __DS18B20__ which gives upto 12 bit resolution.
 3. __pH or Conductivity sensor__ to measure the pH levels of water
-4. __water level sensor__ to measure the amount of water in the system
-5. __fish feed sensor__ to measure the amount of fish food in the automatic fish feeder
+4. __water level sensor__ to measure the amount of water in the system. There are various alternatives we can choose from for this purpose. A ultrasonic rangefinder like __HC-SR04 Ultrasonic Sensor__ can be used to measure the water level distance. An alternate method will be to use an eTape liquid level sensor to which is a solidstate sensor which provides resistive output corresponding to the liquid level in the tank. A cheaper alternative will be to use a series of floating water level sensor switches installed at different heights combined to give a multiplexed output to get the waterlevel in the tank.
+5. __fish feed sensor__ to measure the amount of fish food in the automatic fish feeder. The default sensor would take "Feed Time" inputs from the user to feed the fish. This will be further improved in the future to optimize for reduction of food wastage or overfeeding.
+
+References and product links:
+1. http://electrofriends.com/featured/water-level-indicator-pump-controller-using-raspberrypi/
+2. https://www.adafruit.com/product/464
+3. http://www.instructables.com/id/BH1750-Digital-Light-Sensor/
+4. https://pimylifeup.com/raspberry-pi-temperature-sensor/
+5. https://www.amazon.in/Generic-Liquid-Sensor-Horizontal-Switch/dp/B01AUSU13M?tag=googinhydr18418-21&tag=googinkenshoo-21&ascsubtag=6f27317b-2276-4652-963f-604873b13949
 
 ### Connecting and updating server
 
 RPi, has to collect data, use the Wifi module to connect to the WebHooks of the plantybot webservice and update them regularly (say once every 10mins)
 
-(need updates here, fork and create pull requests)
 
 ### Default farming algorithm
 
