@@ -220,7 +220,7 @@ Also for any updates create an issue [here](https://github.com/plantybot/pitch/i
 
 Check out our organization page on Github: https://github.com/plantybot/
 <div class="fb-customerchat"
- page_id="Plantybot-945132208957908"
+ page_id="945132208957908"
  minimized="true">
 </div>
 <script>
