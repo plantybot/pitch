@@ -223,7 +223,7 @@ Check out our organization page on Github: https://github.com/plantybot/
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId            : '152405612051871',
+      appId            : '297580074051422',
       autoLogAppEvents : true,
       xfbml            : true,
       version          : 'v2.11'
@@ -240,6 +240,6 @@ Check out our organization page on Github: https://github.com/plantybot/
 </script>
 
 <div class="fb-customerchat"
- page_id="SpacetimeEducationLabs"
+ page_id="945132208957908"
  minimized="true">
 </div>
