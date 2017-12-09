@@ -240,6 +240,6 @@ Check out our organization page on Github: https://github.com/plantybot/
 </script>
 
 <div class="fb-customerchat"
- page_id="SpacetimeEducationLabs"
+ page_id="@SpacetimeEducationLabs"
  minimized="true">
 </div>
