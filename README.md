@@ -219,10 +219,7 @@ Some of the features in our minds are adding DNA BioChips for detecting plant di
 Also for any updates create an issue [here](https://github.com/plantybot/pitch/issues).
 
 Check out our organization page on Github: https://github.com/plantybot/
-<div class="fb-customerchat"
- page_id="945132208957908"
- minimized="true">
-</div>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -241,3 +238,8 @@ Check out our organization page on Github: https://github.com/plantybot/
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<div class="fb-customerchat"
+ page_id="945132208957908"
+ minimized="true">
+</div>
