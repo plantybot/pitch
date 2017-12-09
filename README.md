@@ -240,5 +240,5 @@ Check out our organization page on Github: https://github.com/plantybot/
 </script>
 <div class="fb-customerchat"
  page_id="Plantybot-945132208957908"
- minimized="<true|false>">
+ minimized="true">
 </div>
